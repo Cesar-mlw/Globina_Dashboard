@@ -4,13 +4,13 @@ import { Snackbar,  } from '@material-ui/core'
 
 
 
-const login = (state = {user: '', password: '', authUser: false, authPass: false}, action) =>{
+const login = (state = {user: '', password: '', authUser: false, authPass: false}, action) => {
     switch(action.type) {
         case 'CHECK_USER':
             if(state.user === action.user){
                 return {
                     ...state,
-                    authUser: true,
+                    authUser: true
                 }
             }
             else{
@@ -24,8 +24,9 @@ const login = (state = {user: '', password: '', authUser: false, authPass: false
                 }
             }
             else{
-                dispatch(rejectUser(alert('USER WRONG')/*COLOCAR COMPOENNTE DE SNACKBAR AQUI*/))
+                dispatch(rejectUser(alert('PASSWORD WRONG')/*COLOCAR COMPOENNTE DE SNACKBAR AQUI*/))
             }
         
     }
 }
+

@@ -1,30 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { SnackBar, IconButton } from '@material-ui/core'
+import { Snackbar, IconButton } from '@material-ui/core'
 import { Close } from '@material-ui/icons'
 
-const Snackbar = ({open, message, onClick, onClose}) => {
-    <div>
-        <SnackBar
-            anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left'
-            }}
-            open={open}
-            autoHideDuration={6000}
-            onClose={onClose}
-            message={message}
-            action = {[
+const SnackBar = ({ open, message, onClick, onClose }) => {
+    return (
+        <div>
+            <SnackBar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left'
+                }}
+                open={open}
+                autoHideDuration={6000}
+                onClose={onClose}
+                message={message}
+                action={[
                     <IconButton
                         aria-label='Close'
                         color='inherit'
                         onClick={onClick}
                     >
-                        <Close/>
+                        <Close />
                     </IconButton>
-            ]}
-        />   
-    </div>
+                ]}
+            />
+        </div>
+    )
 }
 
 Snackbar.propTypes = {

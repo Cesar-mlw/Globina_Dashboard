@@ -1,35 +1,49 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Typography, Paper, TextField, Button } from '@material-ui/core'
+import { checkData, welcomeUser, rejectUser } from '../actions/login';
+import { connect } from 'react-redux'
 
-const Login = ({onClick, value_email, onChange_email, onChange_pass, value_pass}) => {
-    <div>
-        <Paper elevation={1}>
-            <Typography variant='headline' >Bem Vindo ao Globina Dsahboard!</Typography>
-            <TextField 
-                id='email'
-                label='E-mail'
-                value={value_email}
-                onChange={onChange_email}
-                margin='normal'
-                variant='outlined'
-            />
-            <TextField
-                id='password'
-                label='Password'
-                value={value_pass}
-                onChange={onChange_pass}
-                margin='normal'
-                variant='outlined'
-            />
-            <Button variant='flat'>
-                Cadastrar-se
+const performLogin = ({ dispatch }) => {
+    let email
+    let pass
+    return (
+        <div>
+            <Paper elevation={1}>
+                <form onSubmit={e => {
+                    e.preventDefault()
+                    if(dispatch(checkData(email.value, pass.value))) dispatch(welcomeUser())
+                    else dispatch(rejectUser)
+                }}>
+                    <Typography variant='headline' >Bem Vindo ao Globina Dashboard!</Typography>
+                    <input ref={node => email = node}/>
+                    <input ref={node => pass = node}/>
+                    
+                    {/* <TextField
+                        id='email'
+                        label='E-mail'
+                        margin='normal'
+                        variant='outlined'
+                        ref={node => email = node}
+                    /> */}
+                    {/* <TextField
+                        id='password'
+                        label='Password'
+                        margin='normal'
+                        variant='outlined'
+                        ref={node => pass = node}
+                    /> */}
+
+                    <Button variant='raised' type='submit'>
+                        Entrar
+                </Button>
+                </form>
+                <Button variant='flat'>
+                    Cadastrar-se
             </Button>
-            <Button variant='raised'>
-                Entrar
-            </Button>
-        </Paper>
-    </div>
+            </Paper>
+
+        </div >)
 }
 
-export default Login 
+export default connect()(performLogin) 

@@ -1,15 +1,11 @@
-export const checkUser = user =>({
+export const checkData = (user, pass) =>({
     type: 'CHECK_USER',
-    user
-})
-
-export const checkPass = pass => ({
-    type: 'CHECK_PASS',
+    user,
     pass
 })
 
-export const redirectToMainPage = url =>({
-    type: 'REDIRECT_TO_MAIN_PAGE',
+export const welcomeUser = url =>({
+    type: 'WELCOME_USER',
     url
 })
 

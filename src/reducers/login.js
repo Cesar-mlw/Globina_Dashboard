@@ -1,13 +1,11 @@
-const login = (state = {email: '', pass: ''}, action) => {
+const login = (state = {email: '', pass: '', auth: false}, action) => {
     switch(action.type){
         case 'CHECK_DATA':
-            
             if(action.email === 'cesar' /*state.email*/ && action.pass === '123' /*state.pass*/){
-                return true
-                
+                return {...state, auth: true}
             }
             else{
-                return false
+                return 
             }
 
         case 'WECOME_USER':

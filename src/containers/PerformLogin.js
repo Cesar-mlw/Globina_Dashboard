@@ -4,7 +4,7 @@ import { Typography, Paper, TextField, Button } from '@material-ui/core'
 import { checkData, welcomeUser, rejectUser } from '../actions/login';
 import { connect } from 'react-redux'
 
-const performLogin = ({ dispatch }) => {
+const performLogin = ({ dispatch, auth }) => {
     let email
     let pass
     return (
@@ -12,8 +12,8 @@ const performLogin = ({ dispatch }) => {
             <Paper elevation={1}>
                 <form onSubmit={e => {
                     e.preventDefault()
-                    if(dispatch(checkData(email.value, pass.value))) dispatch(welcomeUser())
-                    else dispatch(rejectUser)
+                    dispatch(checkData(email.value, pass.value))
+                
                 }}>
                     <Typography variant='headline' >Bem Vindo ao Globina Dashboard!</Typography>
                     <input ref={node => email = node}/>

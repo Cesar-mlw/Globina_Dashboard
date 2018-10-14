@@ -8,6 +8,8 @@ import App from './components/App.js'
 
 const store = createStore(rootReducer)
 
+
+console.log(store.getState());
 render(
     <Provider store={store}>
         <App/>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Snackbar, IconButton } from '@material-ui/core'
 import { Close } from '@material-ui/icons'
 
-const SnackBar = ({ open, message, onClick, onClose }) => {
+const SnackBar = ({ open, message, onClick}) => {
     return (
         <div>
             <SnackBar
@@ -13,7 +13,7 @@ const SnackBar = ({ open, message, onClick, onClose }) => {
                 }}
                 open={open}
                 autoHideDuration={6000}
-                onClose={onClose}
+                onClose={onClick}
                 message={message}
                 action={[
                     <IconButton
@@ -33,7 +33,6 @@ Snackbar.propTypes = {
     open: PropTypes.bool.isRequired,
     message: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired
 }
 
 export default Snackbar

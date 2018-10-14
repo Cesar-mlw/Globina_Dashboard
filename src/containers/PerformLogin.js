@@ -1,9 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Typography, Paper, TextField, Button } from '@material-ui/core'
-import { checkData, welcomeUser, rejectUser } from '../actions/login';
 import { connect } from 'react-redux'
+import { checkData } from '../actions/Login'
+import Login from '../components/Login'
+const mapStateToProps = state => ({
 
-mapStateToProps
+})
 
-export default connect()(performLogin) 
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    onSubmit: () => dispatch(checkData(document.getElementById('email').value, document.getElementById('password').value))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

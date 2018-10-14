@@ -1,32 +1,26 @@
 import React from 'react'
+import { TextField, Paper, Button, Typography } from '@material-ui/core'
 import PropTypes from 'prop-types'
 
 
-const Login = ({onSubmit}) => {
-    let email
-    let pass
+const Login = ({ onSubmit }) => {
     return(
         <div>
             <Paper elevation={1}>
                 <form onSubmit={onSubmit}>
                     <Typography variant='headline' >Bem Vindo ao Globina Dashboard!</Typography>
-                    <input ref={node => email = node}/>
-                    <input ref={node => pass = node}/>
-                    
-                    {/* <TextField
+                    <TextField
                         id='email'
                         label='E-mail'
                         margin='normal'
                         variant='outlined'
-                        ref={node => email = node}
-                    /> */}
-                    {/* <TextField
+                    />
+                    <TextField
                         id='password'
                         label='Password'
                         margin='normal'
                         variant='outlined'
-                        ref={node => pass = node}
-                    /> */}
+                    />
 
                     <Button variant='raised' type='submit'>
                         Entrar
@@ -40,3 +34,9 @@ const Login = ({onSubmit}) => {
         </div >
     )
 }
+
+Login.propTypes = {
+    onSubmit: PropTypes.func.isRequired
+}
+
+export default Login

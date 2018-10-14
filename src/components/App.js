@@ -1,9 +1,10 @@
 import React from 'react'
-import Snackbar from './Snackbar'
-import PerformLogin from '../containers/PerformLogin'
+import Snackbar from '../containers/SnackBar'
+import PerformLogin from '../containers/performLogin'
 const App = () => (
     <div>
-        <PerformLogin />
+        <PerformLogin/>
+        <Snackbar/>
     </div>
 )
 

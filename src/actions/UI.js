@@ -1,5 +1,10 @@
-export const deploySnackBar = open, message = ({
+export const deploySnackBar = (open, message) = ({
     type: 'DEPLOY_SNACKBAR',
-    open: false,
-    message: ''
+    open,
+    message
+})
+
+export const closeSnackbar = (open, message) = ({
+    type: 'CLOSE_SNACKBAR',
+    open, 
 })

@@ -1,35 +1,65 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Typography, Paper, TextField, Button } from '@material-ui/core'
-
-const Login = ({onClick, value_email, onChange_email, onChange_pass, value_pass}) => {
-    <div>
-        <Paper elevation={1}>
-            <Typography variant='headline' >Bem Vindo ao Globina Dsahboard!</Typography>
-            <TextField 
-                id='email'
-                label='E-mail'
-                value={value_email}
-                onChange={onChange_email}
-                margin='normal'
-                variant='outlined'
-            />
-            <TextField
-                id='password'
-                label='Password'
-                value={value_pass}
-                onChange={onChange_pass}
-                margin='normal'
-                variant='outlined'
-            />
-            <Button variant='flat'>
-                Cadastrar-se
-            </Button>
-            <Button variant='raised'>
-                Entrar
-            </Button>
-        </Paper>
-    </div>
+import { connect } from 'react-redux'
+import { checkData } from '../actions/login'
+const styles = {
+    
 }
+const Login = ({onClick}) => {
+    let state = {
+        email: null,
+        pass: null,
+        auth: false,
+    }
 
-export default Login 
+    return(
+    <div>
+        <form>
+            <Paper elevation={1}>
+                <Typography variant='headline' >Bem Vindo ao Globina Dsahboard!</Typography>
+                <TextField
+                    id='email'
+                    name= 'email'
+                    label='E-mail'
+                    margin='normal'
+                    variant='outlined'
+                    onChange={
+                        event => {
+                            state.email = event.target.value
+                        }
+                    }
+                />
+                <TextField
+                    id='password'
+                    name= 'password'
+                    label='Password'
+                    margin='normal'
+                    variant='outlined'
+                    onChange={
+                        event => {
+                            state.pass = event.target.value
+                        }
+                    }
+                />
+                <label htmlFor='contained-button-file'>
+                    <Button variant='raised' onClick={() => onClick(state.email, state.pass)}>
+                        Entrar
+                    </Button>
+                </label>
+            </Paper>
+        </form>
+    </div>
+    )}
+
+Login.propTypes = {
+    onClick: PropTypes.func.isRequired,
+}
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+    onClick: (email, pass) => dispatch(checkData(email, pass))
+})
+export default connect(mapDispatchToProps, mapDispatchToProps)(Login)

@@ -1,6 +1,6 @@
-export const checkData = (user, pass) =>({
-    type: 'CHECK_USER',
-    user,
+export const checkData = (email, pass) =>({
+    type: 'CHECK_DATA',
+    email,
     pass
 })
 

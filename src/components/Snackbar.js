@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { SnackBar, IconButton } from '@material-ui/core'
+import { Snackbar, IconButton } from '@material-ui/core'
 import { Close } from '@material-ui/icons'
 
-const Snackbar = ({open, message, onClick, onClose}) => {
+const SnackBar = ({open, message, onClick, onClose}) => {
+    return(
     <div>
-        <SnackBar
+        <Snackbar
             anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left'
@@ -25,13 +26,14 @@ const Snackbar = ({open, message, onClick, onClose}) => {
             ]}
         />   
     </div>
+    )
 }
 
-Snackbar.propTypes = {
+SnackBar.propTypes = {
     open: PropTypes.bool.isRequired,
     message: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired
 }
 
-export default Snackbar
+export default SnackBar

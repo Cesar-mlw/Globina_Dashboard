@@ -1,11 +1,14 @@
 import React from 'react'
 import Snackbar from '../containers/SnackBar'
-import PerformLogin from '../containers/performLogin'
+import Login from '../containers/PerformLogin'
+
+
 const App = () => (
     <div>
-        <PerformLogin/>
-        <Snackbar/>
+        <Login />
+        <Snackbar />      
     </div>
 )
+
 
 export default App

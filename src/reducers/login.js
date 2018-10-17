@@ -1,31 +1,24 @@
-import { bindActionCreators } from "redux";
-
-const login = (state = {email: '', pass: '', auth: false}, action) => {
+const login = (state = { auth:false, email: '', pass:'' }, action) => {
     switch(action.type){
         case 'CHECK_DATA':
-        if(action.email === 'cesar' /*state.email*/ && action.pass === '123' /*state.pass*/){
+        console.log(action.email + ' ' + action.pass);
+            if(action.email === 'Cesar' && action.pass === '123'){
+                console.log(action.email + ' ' + action.pass);
+                alert('GRANTED')
                 return {...state, auth: true}
             }
             else{
+                alert('DENIED')
                 return state
-            }
 
+            }
         case 'WECOME_USER':
             alert('WELCOME')
 
         case 'REJECT_USER':
-            alert('GET OUT!!!')
-
-        case 'CHANGE_EMAIL':
-            return {email: action.text, ...state}
-
-        case 'CHANGE_PASS':
-            return {...state, pass: action.text}
-            
         default:
             return state
     }
 }
-
 
 export default login

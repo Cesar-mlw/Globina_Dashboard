@@ -3,8 +3,8 @@ import Snackbar from '../components/Snackbar'
 import { closeSnackBar } from '../actions/SnackBar'
 
 const mapStateToProps = state => ({
-    open: state.snackBar.open,
-    message: state.snackBar.message
+    open: state.snackbar.open,
+    message: state.snackbar.message
 })
 
 const mapDispatchToProps = dispatch => ({

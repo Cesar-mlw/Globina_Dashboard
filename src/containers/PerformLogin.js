@@ -8,15 +8,29 @@ const styles = {
         flexGrow: 1
     },
     paper: {
+        background: 'transparent',
         margin: '0 auto',
-        width: '50%',
-        height: '35%',
+        width: '33%',
         marginTop: '10%'
     },
-    TextField: {
+    div: {
+        display: 'inline-block',
+        marginLeft: '20%'
+    },
+    textField: {
         marginLeft: '4%',
-        marginTop: '4%'
+        marginTop: '4%',
 
+    },
+    typography: {
+        marginLeft: '8%',
+        margintop: '2%'
+    },
+    button: {
+        marginLeft: '10%',
+        marginTop:'20%',
+        marginBottom: '20%',
+        
     }
 }
 class Login extends React.Component {
@@ -25,45 +39,47 @@ class Login extends React.Component {
         pass: null,
         auth: false,
     }
-    
+
     render() {
         const { onClick, classes } = this.props
         return (
             <div className={classes.root}>
                 <form>
                     <Paper elevation={4} className={classes.paper}>
-                        <Typography variant='headline' >Bem Vindo ao Globina Dashboard!</Typography>
-                        <TextField
-                            id='email'
-                            name='email'
-                            label='E-mail'
-                            margin='normal'
-                            variant='outlined'
-                            onChange={
-                                event => {
-                                    this.setState({email: event.target.value})
+                        <Typography variant='headline' className={classes.typography}>Bem Vindo ao Globina Dashboard!</Typography>
+                        <div className={classes.div}>
+                            <TextField
+                                id='email'
+                                name='email'
+                                label='E-mail'
+                                margin='normal'
+                                variant='outlined'
+                                onChange={
+                                    event => {
+                                        this.setState({ email: event.target.value })
+                                    }
                                 }
-                            }
-                            className={classes.TextField} 
-                        />
-                        <TextField
-                            id='password'
-                            name='password'
-                            label='Password'
-                            margin='normal'
-                            variant='outlined'
-                            onChange={
-                                event => {
-                                    this.setState({pass: event.target.value})
+                                className={classes.textField}
+                            />
+                            <TextField
+                                id='password'
+                                name='password'
+                                label='Password'
+                                margin='normal'
+                                variant='outlined'
+                                onChange={
+                                    event => {
+                                        this.setState({ pass: event.target.value })
+                                    }
                                 }
-                            }
-                            className={classes.TextField}
-                        />
-                        <label htmlFor='contained-button-file'>
-                            <Button variant='raised' onClick={() => onClick(this.state.email, this.state.pass)}>
-                                Entrar
-                    </Button>
-                        </label>
+                                className={classes.textField}
+                            />
+                        </div>
+                        <div className={classes.div}>
+                                <Button variant='raised' size='large' color='primary' onClick={() => onClick(this.state.email, this.state.pass)} className={classes.button}>
+                                    Entrar
+                                </Button>
+                        </div>
                     </Paper>
                 </form>
             </div>

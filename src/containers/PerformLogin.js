@@ -8,7 +8,7 @@ const styles = {
         flexGrow: 1
     },
     paper: {
-        background: 'transparent',
+        backgroundColor: 'filled',
         margin: '0 auto',
         width: '33%',
         marginTop: '10%'

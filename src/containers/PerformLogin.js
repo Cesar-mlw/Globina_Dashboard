@@ -8,12 +8,14 @@ const styles = {
         flexGrow: 1
     },
     paper: {
-        backgroundColor: 'filled',
+        backgroundColor: '#fff',
+        opacity: 0.9,
         margin: '0 auto',
         width: '33%',
         marginTop: '10%'
     },
     div: {
+        opacity: 1,
         display: 'inline-block',
         marginLeft: '20%'
     },
@@ -37,7 +39,6 @@ class Login extends React.Component {
     state = {
         email: null,
         pass: null,
-        auth: false,
     }
 
     render() {

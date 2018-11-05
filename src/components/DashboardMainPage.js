@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames'
-import { withStyles, Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { withStyles, Button, Card, Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton, ListItem, ListItemIcon, ListItemText, CardContent, CardActions } from '@material-ui/core';
 import { Menu, Dashboard, Assignment, ChevronLeft, ChevronRight, Storage } from '@material-ui/icons'
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory'
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -62,7 +63,21 @@ const styles = theme => ({
         flexGrow: 1,
         padding: theme.spacing.unit * 3,
     },
+    card: {
+        width: '30vw',
+        height: '75vh',
+        minWidth: 275,
+    }
 });
+
+//FOR TESTING PURPOSES
+
+const data = [
+    { quarter: 1, earnings: 13000 },
+    { quarter: 2, earnings: 16500 },
+    { quarter: 3, earnings: 14250 },
+    { quarter: 4, earnings: 19000 }
+]
 
 class MainDashboard extends React.Component {
     state = {
@@ -78,7 +93,7 @@ class MainDashboard extends React.Component {
     };
 
     render() {
-        const { classes, theme, ph, turbidez, cloro} = this.props;
+        const { classes, theme, ph, turbidez, cloro } = this.props;
 
         return (
             <div className={classes.root}>
@@ -101,8 +116,8 @@ class MainDashboard extends React.Component {
                             <Menu />
                         </IconButton>
                         <Typography variant="headline" color="inherit" noWrap>
-                            Mini variant drawer
-            </Typography>
+                            Globina Dashboard
+                        </Typography>
                     </Toolbar>
                 </AppBar>
                 <Drawer
@@ -120,22 +135,48 @@ class MainDashboard extends React.Component {
                     <Divider />
                     <List>
                         <ListItem button key='Dados'>
-                            <ListItemIcon><Dashboard/></ListItemIcon>
-                            <ListItemText primary='Dados'/>
+                            <ListItemIcon><Dashboard /></ListItemIcon>
+                            <ListItemText primary='Dados' />
                         </ListItem>
                         <ListItem button key='Rotinas'>
-                            <ListItemIcon><Assignment/></ListItemIcon>
-                            <ListItemText primary='Rotinas'/>
+                            <ListItemIcon><Assignment /></ListItemIcon>
+                            <ListItemText primary='Rotinas' />
                         </ListItem>
                         <ListItem button key='Histórico'>
-                            <ListItemIcon><Storage/></ListItemIcon>
-                            <ListItemText primary='Histórico'/>
+                            <ListItemIcon><Storage /></ListItemIcon>
+                            <ListItemText primary='Histórico' />
                         </ListItem>
                     </List>
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    {/* PAPER WILL COME HERE */}
+                    <Card className={classes.card}>
+                        <CardContent>
+                            <VictoryChart
+                                theme={VictoryTheme.material}
+                                domainPadding={20}
+                            >
+                                <VictoryAxis
+                                    tickValues={[1, 2, 3, 4]}
+                                    tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
+
+                                />
+                                <VictoryAxis
+                                    dependentAxis
+
+                                    tickFormat={(x) => (`$${x / 1000}k`)}
+                                />
+                                <VictoryBar
+                                    data={data}
+                                    x="quarter"
+                                    y="earnings"
+                                />
+                            </VictoryChart>
+                        </CardContent>
+                        <CardActions>
+                            <Button size="small">PIROQUIO</Button>
+                        </CardActions>
+                    </Card>
                 </main>
             </div>
         );

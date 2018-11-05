@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames'
-import { withStyles, Button, Card, Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton, ListItem, ListItemIcon, ListItemText, CardContent, CardActions } from '@material-ui/core';
+import { withStyles, Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Menu, Dashboard, Assignment, ChevronLeft, ChevronRight, Storage } from '@material-ui/icons'
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory'
+import PHChart from './PH_Chart'
+import TURChart from './TURChart'
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -54,8 +55,9 @@ const styles = theme => ({
     },
     toolbar: {
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+        alignItems: 'left',
+        justifyContent: 'start',
+        flexDirection: 'row',
         padding: '0 8px',
         ...theme.mixins.toolbar,
     },
@@ -63,21 +65,10 @@ const styles = theme => ({
         flexGrow: 1,
         padding: theme.spacing.unit * 3,
     },
-    card: {
-        width: '30vw',
-        height: '75vh',
-        minWidth: 275,
-    }
 });
 
 //FOR TESTING PURPOSES
 
-const data = [
-    { quarter: 1, earnings: 13000 },
-    { quarter: 2, earnings: 16500 },
-    { quarter: 3, earnings: 14250 },
-    { quarter: 4, earnings: 19000 }
-]
 
 class MainDashboard extends React.Component {
     state = {
@@ -149,34 +140,10 @@ class MainDashboard extends React.Component {
                     </List>
                 </Drawer>
                 <main className={classes.content}>
-                    <div className={classes.toolbar} />
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <VictoryChart
-                                theme={VictoryTheme.material}
-                                domainPadding={20}
-                            >
-                                <VictoryAxis
-                                    tickValues={[1, 2, 3, 4]}
-                                    tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
-
-                                />
-                                <VictoryAxis
-                                    dependentAxis
-
-                                    tickFormat={(x) => (`$${x / 1000}k`)}
-                                />
-                                <VictoryBar
-                                    data={data}
-                                    x="quarter"
-                                    y="earnings"
-                                />
-                            </VictoryChart>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">PIROQUIO</Button>
-                        </CardActions>
-                    </Card>
+                    <div className={classes.toolbar}>
+                        <PHChart />
+                        <TURChart />
+                    </div>
                 </main>
             </div>
         );

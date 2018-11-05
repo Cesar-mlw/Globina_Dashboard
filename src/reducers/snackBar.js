@@ -1,15 +1,12 @@
-const snackBar = (state = {open: false, message: ''}, action) => {
+const snackbar = (state = {open: false, message: ''}, action) => {
     switch(action.type){
         case 'DEPLOY_SNACKBAR':
-            return {...state,open: action.open, message: action.message}
-            
+            return{...state, open: true, message: action.message}
         case 'CLOSE_SNACKBAR':
-            return {...state, open: false, message: ''}
+            return{...state, open: false, message: ''}
         default:
             return state
     }
 }
 
-
-
-export default snackBar
+export default snackbar

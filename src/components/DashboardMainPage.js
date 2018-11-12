@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames'
 import { withStyles, Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import { Menu, Dashboard, Assignment, ChevronLeft, ChevronRight, Storage } from '@material-ui/icons'
+import { Menu, Dashboard, Assignment, ChevronLeft, ChevronRight, Storage, Store } from '@material-ui/icons'
 import PHChart from './PH_Chart'
 import TURChart from './TURChart'
+import Store_Card from './Store'
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -73,6 +74,7 @@ const styles = theme => ({
 class MainDashboard extends React.Component {
     state = {
         open: false,
+        page: 'Dados'
     };
 
     handleDrawerOpen = () => {
@@ -82,6 +84,10 @@ class MainDashboard extends React.Component {
     handleDrawerClose = () => {
         this.setState({ open: false });
     };
+
+    // handlePageChange = (selected) => {
+    //     console.log(event.target);
+    // }
 
     render() {
         const { classes, theme, ph, turbidez, cloro } = this.props;
@@ -125,7 +131,7 @@ class MainDashboard extends React.Component {
                     </div>
                     <Divider />
                     <List>
-                        <ListItem button key='Dados'>
+                        <ListItem button key='Dados' /* Estou querendo usar um handler soh para mudar entre as paginas do drawer*/>
                             <ListItemIcon><Dashboard /></ListItemIcon>
                             <ListItemText primary='Dados' />
                         </ListItem>
@@ -137,12 +143,20 @@ class MainDashboard extends React.Component {
                             <ListItemIcon><Storage /></ListItemIcon>
                             <ListItemText primary='Histórico' />
                         </ListItem>
+                        <ListItem button key='Nossos_Produtos' selected>
+                            <ListItemIcon><Store/></ListItemIcon>
+                            <ListItemText primary='Família Surgate' />
+                        </ListItem>
                     </List>
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.toolbar}>
-                        <PHChart />
-                        <TURChart />
+                        <Store_Card/>
+                        
+                        
+                        { /*charts */
+                            /* <PHChart />
+                        <TURChart /> */}
                     </div>
                 </main>
             </div>

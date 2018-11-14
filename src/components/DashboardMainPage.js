@@ -85,9 +85,9 @@ class MainDashboard extends React.Component {
         this.setState({ open: false });
     };
 
-    // handlePageChange = (selected) => {
-    //     console.log(event.target);
-    // }
+     handlePageChange = (selected) => {
+         console.log(event.target);
+     }
 
     render() {
         const { classes, theme, ph, turbidez, cloro } = this.props;

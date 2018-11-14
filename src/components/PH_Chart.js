@@ -10,7 +10,7 @@ const style = {
         minWidth: 275,
     },
     div: {
-        paddingTop: '6vh',
+        paddingTop: '8vh',
         paddingRight: '2vw'
     }
 }

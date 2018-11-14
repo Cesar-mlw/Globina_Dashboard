@@ -57,6 +57,7 @@ const styles = theme => ({
     toolbar: {
         display: 'flex',
         alignItems: 'left',
+        flexWrap: 'wrap',
         justifyContent: 'start',
         flexDirection: 'row',
         padding: '0 8px',
@@ -74,7 +75,7 @@ const styles = theme => ({
 class MainDashboard extends React.Component {
     state = {
         open: false,
-        page: 'Dados'
+        page: null
     };
 
     handleDrawerOpen = () => {
@@ -85,8 +86,19 @@ class MainDashboard extends React.Component {
         this.setState({ open: false });
     };
 
-     handlePageChange = (selected) => {
-         console.log(event.target);
+     handlePageChange = (tab) => {
+        if(tab === "dado"){
+            this.setState({page: 'dado'})
+        }
+        else if(tab === 'rotina'){
+            this.setState({page: 'rotina'})
+        }
+        else if(tab === 'historico'){
+            this.setState({page: 'historico'})
+        }
+        else{
+            this.setState({page: 'store'})
+        }
      }
 
     render() {
@@ -131,19 +143,19 @@ class MainDashboard extends React.Component {
                     </div>
                     <Divider />
                     <List>
-                        <ListItem button key='Dados' /* Estou querendo usar um handler soh para mudar entre as paginas do drawer*/>
+                        <ListItem button key='Dados' onClick={() => this.handlePageChange("dado")}>
                             <ListItemIcon><Dashboard /></ListItemIcon>
                             <ListItemText primary='Dados' />
                         </ListItem>
-                        <ListItem button key='Rotinas'>
+                        <ListItem button key='Rotinas' onClick={() => this.handlePageChange("rotina")}>
                             <ListItemIcon><Assignment /></ListItemIcon>
                             <ListItemText primary='Rotinas' />
                         </ListItem>
-                        <ListItem button key='Histórico'>
+                        <ListItem button key='Histórico' onClick={() => this.handlePageChange("historico")}>
                             <ListItemIcon><Storage /></ListItemIcon>
                             <ListItemText primary='Histórico' />
                         </ListItem>
-                        <ListItem button key='Nossos_Produtos' selected>
+                        <ListItem button key='Nossos_Produtos' onClick={() => this.handlePageChange("store")}>
                             <ListItemIcon><Store/></ListItemIcon>
                             <ListItemText primary='Família Surgate' />
                         </ListItem>
@@ -151,12 +163,10 @@ class MainDashboard extends React.Component {
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.toolbar}>
-                        <Store_Card/>
-                        
-                        
-                        { /*charts */
-                            /* <PHChart />
-                        <TURChart /> */}
+                        {this.state.page === 'dado' && (<div className={classes.toolbar}><PHChart/> <TURChart/></div>)}
+                        {this.state.page === 'rotina' && (<div><Typography>ROTINA PAGE</Typography></div>)}
+                        {this.state.page === 'historico' && (<div><Typography>HISTORICO PAGE</Typography></div>)}
+                        {this.state.page === 'store' && (<Store_Card/>)}
                     </div>
                 </main>
             </div>

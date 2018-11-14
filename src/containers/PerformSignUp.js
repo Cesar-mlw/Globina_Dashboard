@@ -11,8 +11,8 @@ const styles = {
         backgroundColor: '#fff',
         opacity: 0.9,
         margin: '0 auto',
-        width: '33vw',
-        height: '48vh',
+        width: '38vw',
+        height: '78vh',
         marginTop: '10%'
     },
     div: {
@@ -21,7 +21,7 @@ const styles = {
         marginLeft: '20%'
     },
     textField: {
-        margin: '0 auto',
+        marginRight: '-3vw',
         marginTop: '4vh'
 
     },
@@ -44,6 +44,7 @@ class SignUp extends React.Component {
         serialGlobina: null,
         email: null,
         pass: null,
+        confirmPass: null
     }
 
     render() {
@@ -77,6 +78,76 @@ class SignUp extends React.Component {
                                 onChange={
                                     event => {
                                         this.setState({ cpf: event.target.value })
+                                    }
+                                }
+                                className={classes.textField}
+                                fullWidth
+                            />
+                            <TextField
+                                id='telefone'
+                                name='telefone'
+                                label='Telefone'
+                                margin='dense'
+                                variant='outlined'
+                                onChange={
+                                    event => {
+                                        this.setState({ telefone: event.target.value })
+                                    }
+                                }
+                                className={classes.textField}
+                                fullWidth
+                            />
+                            <TextField
+                                id='serial'
+                                name='serial'
+                                label='Serial'
+                                margin='dense'
+                                variant='outlined'
+                                onChange={
+                                    event => {
+                                        this.setState({ serialGlobina: event.target.value })
+                                    }
+                                }
+                                className={classes.textField}
+                                fullWidth
+                            />
+                            <TextField
+                                id='email'
+                                name='email'
+                                label='E-mail'
+                                margin='dense'
+                                variant='outlined'
+                                onChange={
+                                    event => {
+                                        this.setState({ email: event.target.value })
+                                    }
+                                }
+                                className={classes.textField}
+                                fullWidth
+                            />
+                            <TextField
+                                id='pass'
+                                name='pass'
+                                label='Senha'
+                                margin='dense'
+                                variant='outlined'
+                                onChange={
+                                    event => {
+                                        this.setState({ pass: event.target.value })
+                                    }
+                                }
+                                className={classes.textField}
+                                fullWidth
+                            />
+                            <TextField
+                                id='confirmPass'
+                                name='ConfirmPass'
+                                label='Confirme sua senha'
+                                margin='dense'
+                                variant='outlined'
+                                onChange={
+                                    event => {
+                                        this.setState({ confirmPass: event.target.value })
                                     }
                                 }
                                 className={classes.textField}

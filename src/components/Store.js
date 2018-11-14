@@ -4,7 +4,7 @@ import { CardHeader, withStyles, Button, Card, CardContent, CardActions, CardMed
 import Gaben from '../images/Gaben.jpg'
 const style = {
     card: {
-        width: '30vw',
+        width: '28vw',
         height: 'auto',
         minWidth: 275,
     },

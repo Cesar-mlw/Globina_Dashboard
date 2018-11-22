@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { CardHeader, withStyles, Button, Card, CardContent, CardActions } from '@material-ui/core';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory'
+import { VictoryArea, VictoryChart, VictoryAxis, VictoryTheme } from 'victory'
 
 const style = {
     card: {
@@ -15,10 +15,10 @@ const style = {
     }
 }
 const data = [
-    { quarter: 1, earnings: 13000 },
-    { quarter: 2, earnings: 16500 },
-    { quarter: 3, earnings: 14250 },
-    { quarter: 4, earnings: 19000 }
+    { quarter: 1, earnings: 12 },
+    { quarter: 2, earnings: 8 },
+    { quarter: 3, earnings: 7.5 },
+    { quarter: 4, earnings: 5 }
 ]
 class TURChart extends React.Component {
     render() {
@@ -28,22 +28,23 @@ class TURChart extends React.Component {
             <div className={classes.div}>
                 <Card className={classes.card}>
                     <CardContent>
-                        <CardHeader title='Nível de PH' />
+                        <CardHeader title='Nível de Cloro' />
                         <VictoryChart
                             theme={VictoryTheme.material}
                             domainPadding={20}
                         >
                             <VictoryAxis
                                 tickValues={[1, 2, 3, 4]}
-                                tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
+                                tickFormat={["Sample 1", "Sample 2", "Sample 3", "Sample 4"]}
 
                             />
                             <VictoryAxis
                                 dependentAxis
 
-                                tickFormat={(x) => (`$${x / 1000}k`)}
+                                tickFormat={(x) => (`${x}mg/l`)}
                             />
-                            <VictoryBar
+                            <VictoryArea
+                                style={{data: {fill: '#c43a31'}}}
                                 data={data}
                                 x="quarter"
                                 y="earnings"
@@ -51,7 +52,7 @@ class TURChart extends React.Component {
                         </VictoryChart>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">PIROQUIO</Button>
+                        <Button size="small">Consultar</Button>
                     </CardActions>
                 </Card>
             </div>

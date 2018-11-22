@@ -125,7 +125,7 @@ class MainDashboard extends React.Component {
                             <Menu />
                         </IconButton>
                         <Typography variant="headline" color="inherit" noWrap>
-                            Globina Dashboard
+                            Marketplace
                         </Typography>
                     </Toolbar>
                 </AppBar>
